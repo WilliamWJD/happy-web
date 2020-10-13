@@ -1,7 +1,7 @@
-import React from 'react'
+import React from 'react';
 
-const App:React.FC = () =>{
-  return <h1>Happy</h1>
-}
+const App: React.FC = () => {
+  return <h1>Happy</h1>;
+};
 
 export default App;
