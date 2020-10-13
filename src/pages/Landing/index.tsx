@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { FiArrowRight } from 'react-icons/fi';
 
 import logoImg from '../../images/logo.svg';
@@ -21,9 +22,9 @@ const Landing: React.FC = () => {
           <span>São Paulo</span>
         </div>
 
-        <a href="/#">
+        <Link to="app">
           <FiArrowRight size={20} color="rgba(0,0,0,0.6)" />
-        </a>
+        </Link>
       </ContentWrapper>
     </PageLanding>
   );
