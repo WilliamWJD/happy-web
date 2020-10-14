@@ -1,4 +1,5 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import { Map, Marker, TileLayer } from 'react-leaflet';
 import { FiArrowLeft, FiPlus } from 'react-icons/fi';
 import L from 'leaflet';
@@ -25,12 +26,14 @@ const happyMapIcon = L.icon({
 });
 
 const CreateOrphanage: React.FC = () => {
+  const { goBack } = useHistory();
+
   return (
     <Container>
       <aside>
         <img src={mapMarkerImg} alt="Happy" />
         <footer>
-          <button type="button">
+          <button type="button" onClick={goBack}>
             <FiArrowLeft size={24} color="#FFF" />
           </button>
         </footer>
