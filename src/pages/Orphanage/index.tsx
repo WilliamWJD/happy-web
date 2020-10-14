@@ -1,9 +1,8 @@
 import React from 'react';
 import { FiClock, FiInfo } from 'react-icons/fi';
 import { Map, Marker, TileLayer } from 'react-leaflet';
-import L from 'leaflet';
 
-import mapMarkerImg from '../../images/map-marker.svg';
+import mapIcon from '../../utils/mapIcon';
 
 import Sidebar from '../../components/Sidebar';
 
@@ -19,14 +18,6 @@ import {
   BoxHour,
   BoxOpenOnWeekends,
 } from './styles';
-
-const happyMapIcon = L.icon({
-  iconUrl: mapMarkerImg,
-
-  iconSize: [58, 68],
-  iconAnchor: [29, 68],
-  popupAnchor: [0, -60],
-});
 
 const Orphanage: React.FC = () => {
   return (
@@ -100,7 +91,7 @@ const Orphanage: React.FC = () => {
                 <TileLayer url="https://a.tile.openstreetmap.org/{z}/{x}/{y}.png" />
                 <Marker
                   interactive={false}
-                  icon={happyMapIcon}
+                  icon={mapIcon}
                   position={[-27.2092052, -49.6401092]}
                 />
               </Map>
