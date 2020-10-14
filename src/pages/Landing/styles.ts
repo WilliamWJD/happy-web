@@ -58,8 +58,8 @@ export const ContentWrapper = styled.div`
     right: 0;
     bottom: 0;
 
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     background: #ffd666;
     border-radius: 20px;
 
