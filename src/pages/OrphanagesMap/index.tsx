@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FiPlus, FiArrowRight } from 'react-icons/fi';
 import { Map, TileLayer, Marker } from 'react-leaflet';
 
 import mapIcon from '../../utils/mapIcon';
+import api from '../../services/api';
 
 import 'leaflet/dist/leaflet.css';
 
@@ -12,6 +13,14 @@ import mapMarkerImg from '../../images/map-marker.svg';
 import { PageMap, MarkPopup } from './styles';
 
 const OrphanagesMap: React.FC = () => {
+  useEffect(() => {
+    async function loadOrphanages() {
+      const response = await api.get('/orphanages');
+      console.log(response.data);
+    }
+    loadOrphanages();
+  }, []);
+
   return (
     <PageMap>
       <aside>
