@@ -5,7 +5,8 @@ interface BoxOpenOnWeekendsProps {
 }
 
 interface ButtonImageProps {
-  active?: boolean;
+  activeImageIndex?: number;
+  indexImage?: number;
 }
 
 export const Container = styled.div`
@@ -60,7 +61,7 @@ export const ButtonImage = styled.button<ButtonImageProps>`
   }
 
   ${props =>
-    props.active &&
+    props.activeImageIndex === props.indexImage &&
     css`
       opacity: 1;
     `}

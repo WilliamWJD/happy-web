@@ -43,6 +43,7 @@ const Orphanage: React.FC = () => {
   const params = useParams<OrphageParams>();
 
   const [orphanage, setOrphanage] = useState<Orphanage>();
+  const [activeImageIndex, setActiveImageIndex] = useState(0);
 
   const { id } = params;
 
@@ -64,11 +65,20 @@ const Orphanage: React.FC = () => {
 
       <Main>
         <OrphanageDetails>
-          <img src={orphanage.images[0].url} alt={orphanage.name} />
+          <img
+            src={orphanage.images[activeImageIndex].url}
+            alt={orphanage.name}
+          />
 
           <Images>
-            {orphanage.images.map(image => (
-              <ButtonImage type="button" key={image.id} active>
+            {orphanage.images.map((image, index) => (
+              <ButtonImage
+                type="button"
+                key={image.id}
+                onClick={() => setActiveImageIndex(index)}
+                activeImageIndex={activeImageIndex}
+                indexImage={index}
+              >
                 <img src={image.url} alt={orphanage.name} />
               </ButtonImage>
             ))}
