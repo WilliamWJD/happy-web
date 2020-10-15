@@ -51,7 +51,6 @@ const Orphanage: React.FC = () => {
     async function loadOrphanageDetail() {
       const response = await api.get(`/orphanages/${id}`);
       setOrphanage(response.data);
-      console.log(response.data);
     }
     loadOrphanageDetail();
   }, [id]);
@@ -133,7 +132,9 @@ const Orphanage: React.FC = () => {
               </BoxHour>
 
               {orphanage.open_on_weekends ? (
-                <BoxOpenOnWeekends>
+                <BoxOpenOnWeekends
+                  OrphanageWeekends={orphanage.open_on_weekends}
+                >
                   <FiInfo size={32} color="#39CC83" />
                   Atendemos
                   <br />
