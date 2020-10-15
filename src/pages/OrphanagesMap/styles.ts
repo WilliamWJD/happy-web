@@ -1,5 +1,16 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { Popup } from 'react-leaflet';
+
+const appearFromLeft = keyframes`
+  from{
+    opacity:0;
+    transform: translateX(-50px);
+  }
+  to{
+    opacity:1;
+    tranform:translateX(0)
+  }
+`;
 
 export const PageMap = styled.div`
   width: 100vw;
@@ -16,6 +27,16 @@ export const PageMap = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+
+    > div {
+      height: 100%;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      animation: ${appearFromLeft} 1s;
+    }
 
     h2 {
       font-size: 40px;

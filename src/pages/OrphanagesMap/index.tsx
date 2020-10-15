@@ -72,34 +72,41 @@ const OrphanagesMap: React.FC = () => {
   return (
     <PageMap>
       <aside>
-        <header>
-          <img src={mapMarkerImg} alt="Happy" />
-          <h2>Escolha um orfanato no mapa</h2>
-          <p>Muitas crianças estão esperando a sua visita :)</p>
-        </header>
+        <div>
+          <header>
+            <img src={mapMarkerImg} alt="Happy" />
+            <h2>Escolha um orfanato no mapa</h2>
+            <p>Muitas crianças estão esperando a sua visita :)</p>
+          </header>
 
-        <footer>
-          <strong>
-            Feito com
-            <FiHeart color="#fff" size={20} />
-          </strong>
-          <ul>
-            <li>
-              <a
-                target="_blank"
-                href="https://www.linkedin.com/in/william-jose-dias/"
-              >
-                <img src={iconLinkedin} alt="" />
-              </a>
-            </li>
-            <li>
-              <a target="_blank" href="https://github.com/williamwjd">
-                <img src={iconGithub} alt="" />
-              </a>
-            </li>
-          </ul>
-          {/* <span>William José Dias</span> */}
-        </footer>
+          <footer>
+            <strong>
+              Feito com
+              <FiHeart color="#fff" size={20} />
+            </strong>
+            <ul>
+              <li>
+                <a
+                  // eslint-disable-next-line react/jsx-no-target-blank
+                  target="_blank"
+                  href="https://www.linkedin.com/in/william-jose-dias/"
+                >
+                  <img src={iconLinkedin} alt="" />
+                </a>
+              </li>
+              <li>
+                <a
+                  // eslint-disable-next-line react/jsx-no-target-blank
+                  target="_blank"
+                  href="https://github.com/williamwjd"
+                >
+                  <img src={iconGithub} alt="" />
+                </a>
+              </li>
+            </ul>
+            {/* <span>William José Dias</span> */}
+          </footer>
+        </div>
       </aside>
 
       <Map
