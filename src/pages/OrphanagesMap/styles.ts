@@ -37,6 +37,29 @@ export const PageMap = styled.div`
 
       strong {
         font-weight: 800;
+
+        svg {
+          margin-left: 5px;
+        }
+      }
+
+      ul {
+        list-style: none;
+        display: flex;
+        flex-direction: row;
+
+        li {
+          margin: 5px 5px 0 0;
+          img {
+            width: 30px;
+            height: 30px;
+            transition: 0.2s;
+
+            &:hover {
+              transform: translateY(-3px);
+            }
+          }
+        }
       }
     }
   }

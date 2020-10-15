@@ -17,10 +17,10 @@ const Landing: React.FC = () => {
           <p>Visite orfanatos e mude o dia de muitas crianças</p>
         </main>
 
-        <div>
+        {/* <div>
           <strong>Sumaré</strong>
           <span>São Paulo</span>
-        </div>
+        </div> */}
 
         <Link to="app">
           <FiArrowRight size={20} color="rgba(0,0,0,0.6)" />

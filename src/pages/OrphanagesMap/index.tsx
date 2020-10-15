@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { FiPlus, FiArrowRight } from 'react-icons/fi';
+import { FiPlus, FiArrowRight, FiHeart } from 'react-icons/fi';
 import { Map, TileLayer, Marker } from 'react-leaflet';
 import { toast } from 'react-toastify';
 
@@ -11,6 +11,8 @@ import api from '../../services/api';
 import 'leaflet/dist/leaflet.css';
 
 import mapMarkerImg from '../../images/map-marker.svg';
+import iconLinkedin from '../../images/icons/linkedin.svg';
+import iconGithub from '../../images/icons/github.svg';
 
 import { PageMap, MarkPopup } from './styles';
 
@@ -77,8 +79,26 @@ const OrphanagesMap: React.FC = () => {
         </header>
 
         <footer>
-          <strong>Sumaré</strong>
-          <span>São Paulo</span>
+          <strong>
+            Feito com
+            <FiHeart color="#fff" size={20} />
+          </strong>
+          <ul>
+            <li>
+              <a
+                target="_blank"
+                href="https://www.linkedin.com/in/william-jose-dias/"
+              >
+                <img src={iconLinkedin} alt="" />
+              </a>
+            </li>
+            <li>
+              <a target="_blank" href="https://github.com/williamwjd">
+                <img src={iconGithub} alt="" />
+              </a>
+            </li>
+          </ul>
+          {/* <span>William José Dias</span> */}
         </footer>
       </aside>
 
