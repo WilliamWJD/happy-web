@@ -98,7 +98,7 @@ const OrphanagesMap: React.FC = () => {
         </div>
       </aside>
       <Map
-        center={[currentLatitude, currentLongitude]}
+        center={[-22.839296, -47.1498752]}
         zoom={15}
         style={{ width: '100%', height: '100%' }}
       >
@@ -107,7 +107,7 @@ const OrphanagesMap: React.FC = () => {
         {orphanages.map(orphanage => (
           <Marker
             icon={mapIcon}
-            position={[-22.839296, -47.1498752]}
+            position={[orphanage.latitude, orphanage.longitude]}
             key={orphanage.id}
           >
             <MarkPopup
