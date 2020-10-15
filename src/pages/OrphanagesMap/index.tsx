@@ -4,7 +4,6 @@ import { FiPlus, FiArrowRight, FiHeart } from 'react-icons/fi';
 import { Map, TileLayer, Marker } from 'react-leaflet';
 import { toast } from 'react-toastify';
 
-import Axios from 'axios';
 import mapIcon from '../../utils/mapIcon';
 import api from '../../services/api';
 
@@ -30,9 +29,6 @@ const OrphanagesMap: React.FC = () => {
 
   useEffect(() => {
     CurrentLocation();
-
-    getCityAndUf();
-
     async function loadOrphanages() {
       const response = await api.get('/orphanages');
       console.log(response.data);
@@ -60,13 +56,6 @@ const OrphanagesMap: React.FC = () => {
         }
       },
     );
-  }
-
-  async function getCityAndUf() {
-    const response = await Axios.get(
-      `http://maps.googleapis.com/maps/api/geocode/xml?latlng=-26.196223,-52.689523`,
-    );
-    console.log(response.data);
   }
 
   return (
