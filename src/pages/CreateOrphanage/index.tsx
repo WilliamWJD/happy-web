@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Map, Marker, TileLayer } from 'react-leaflet';
+import { LeafletMouseEvent } from 'leaflet';
 import { FiPlus } from 'react-icons/fi';
 
 import mapIcon from '../../utils/mapIcon';
@@ -18,6 +19,13 @@ import {
 } from './styles';
 
 const CreateOrphanage: React.FC = () => {
+  const [position, setPosition] = useState({ latitude: 0, longitude: 0 });
+
+  function handleMapClick(event: LeafletMouseEvent) {
+    const { lat, lng } = event.latlng;
+    setPosition({ latitude: lat, longitude: lng });
+  }
+
   return (
     <Container>
       <Sidebar />
@@ -28,17 +36,20 @@ const CreateOrphanage: React.FC = () => {
             <legend>Dados</legend>
 
             <Map
-              center={[-27.2092052, -49.6401092]}
+              center={[-22.8327222, -47.1459692]}
               style={{ width: '100%', height: 280 }}
               zoom={15}
+              onClick={handleMapClick}
             >
               <TileLayer url="https://a.tile.openstreetmap.org/{z}/{x}/{y}.png" />
 
-              <Marker
-                interactive={false}
-                icon={mapIcon}
-                position={[-27.2092052, -49.6401092]}
-              />
+              {position.latitude !== 0 && (
+                <Marker
+                  interactive={false}
+                  icon={mapIcon}
+                  position={[position.latitude, position.longitude]}
+                />
+              )}
             </Map>
 
             <InputBlock>
