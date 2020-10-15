@@ -86,17 +86,35 @@ export const InputBlock = styled.div`
     line-height: 28px;
   }
 
-  > button {
+  input[type='file'] {
+    display: none;
+  }
+
+  img {
     width: 100%;
-    height: 64px;
+    height: 96px;
+    object-fit: cover;
+    border-radius: 20px;
+  }
+`;
+
+export const UploadedImages = styled.div`
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 16px;
+
+  > label {
+    height: 96px;
     background: #f5f8fa;
     border: 1px dashed #96d2f0;
     border-radius: 20px;
     cursor: pointer;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 `;
-
-export const UploadedImages = styled.div``;
 
 export const BoxOptions = styled.div`
   display: grid;

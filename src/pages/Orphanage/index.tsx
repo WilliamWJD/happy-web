@@ -51,6 +51,7 @@ const Orphanage: React.FC = () => {
     async function loadOrphanageDetail() {
       const response = await api.get(`/orphanages/${id}`);
       setOrphanage(response.data);
+      console.log(response.data);
     }
     loadOrphanageDetail();
   }, [id]);
@@ -90,7 +91,7 @@ const Orphanage: React.FC = () => {
 
             <MapContainer>
               <Map
-                center={[-27.2092052, -49.6401092]}
+                center={[orphanage.latitude, orphanage.longitude]}
                 zoom={16}
                 style={{ width: '100%', height: 280 }}
                 dragging={false}
