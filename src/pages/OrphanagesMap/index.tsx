@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FiPlus, FiArrowRight } from 'react-icons/fi';
 import { Map, TileLayer, Marker } from 'react-leaflet';
+import { toast } from 'react-toastify';
 
 import mapIcon from '../../utils/mapIcon';
 import api from '../../services/api';
@@ -20,9 +21,13 @@ interface IOrphanage {
 }
 
 const OrphanagesMap: React.FC = () => {
+  const [currentLatitude, setCurrentLatitude] = useState(0);
+  const [currentLongitude, setCurrentLongitude] = useState(0);
   const [orphanages, setOrphanages] = useState<IOrphanage[]>([]);
 
   useEffect(() => {
+    CurrentLocation();
+
     async function loadOrphanages() {
       const response = await api.get('/orphanages');
       console.log(response.data);
@@ -30,6 +35,27 @@ const OrphanagesMap: React.FC = () => {
     }
     loadOrphanages();
   }, []);
+
+  function CurrentLocation() {
+    navigator.geolocation.getCurrentPosition(
+      position => {
+        setCurrentLatitude(position.coords.latitude);
+        setCurrentLongitude(position.coords.longitude);
+      },
+      error => {
+        switch (error.code) {
+          case error.PERMISSION_DENIED:
+            toast.error('Por favor habilite sua localização');
+            break;
+
+          case error.POSITION_UNAVAILABLE:
+            toast.error('Informações de localização não disponíveis');
+            break;
+          default:
+        }
+      },
+    );
+  }
 
   return (
     <PageMap>
@@ -47,7 +73,7 @@ const OrphanagesMap: React.FC = () => {
       </aside>
 
       <Map
-        center={[-22.8327222, -47.1459692]}
+        center={[currentLatitude, currentLongitude]}
         zoom={15}
         style={{ width: '100%', height: '100%' }}
       >
