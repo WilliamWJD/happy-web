@@ -1,5 +1,5 @@
 import React, { useState, FormEvent, ChangeEvent } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import { Map, Marker, TileLayer } from 'react-leaflet';
 import { LeafletMouseEvent } from 'leaflet';
 import { FiPlus, FiX } from 'react-icons/fi';
@@ -29,6 +29,7 @@ interface IPreviewImages {
 
 const CreateOrphanage: React.FC = () => {
   const history = useHistory();
+  const { lat, lgnt } = useParams();
 
   const [position, setPosition] = useState({ latitude: 0, longitude: 0 });
 
@@ -85,8 +86,15 @@ const CreateOrphanage: React.FC = () => {
       data.append('about', about);
       data.append('instructions', instructions);
       data.append('opening_hours', opening_hours);
-      data.append('latitude', String(position.latitude));
-      data.append('longitude', String(position.longitude));
+
+      if (position.latitude === 0 || position.longitude === 0) {
+        data.append('latitude', lat);
+        data.append('longitude', lgnt);
+      } else {
+        data.append('latitude', String(position.latitude));
+        data.append('longitude', String(position.longitude));
+      }
+
       data.append('open_on_weekends', String(open_on_weekends));
 
       images.forEach(image => {
@@ -114,7 +122,7 @@ const CreateOrphanage: React.FC = () => {
             <legend>Dados</legend>
 
             <Map
-              center={[-22.8327222, -47.1459692]}
+              center={[lat, lgnt]}
               style={{ width: '100%', height: 280 }}
               zoom={15}
               onClick={handleMapClick}
