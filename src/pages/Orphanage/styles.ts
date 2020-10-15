@@ -1,4 +1,12 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+
+interface BoxOpenOnWeekendsProps {
+  OrphanageWeekends?: boolean;
+}
+
+interface ButtonImageProps {
+  active?: boolean;
+}
 
 export const Container = styled.div`
   display: flex;
@@ -34,7 +42,7 @@ export const Images = styled.div`
   margin: 16px 40px 0;
 `;
 
-export const ButtonImage = styled.button`
+export const ButtonImage = styled.button<ButtonImageProps>`
   border: 0;
   height: 88px;
   background: none;
@@ -50,6 +58,12 @@ export const ButtonImage = styled.button`
     height: 88px;
     object-fit: cover;
   }
+
+  ${props =>
+    props.active &&
+    css`
+      opacity: 1;
+    `}
 `;
 
 export const OrphanageDetailsContent = styled.div`
@@ -129,7 +143,7 @@ export const BoxHour = styled.div`
   }
 `;
 
-export const BoxOpenOnWeekends = styled.div`
+export const BoxOpenOnWeekends = styled.div<BoxOpenOnWeekendsProps>`
   padding: 32px 24px;
   border-radius: 20px;
   line-height: 28px;
@@ -142,4 +156,12 @@ export const BoxOpenOnWeekends = styled.div`
     display: block;
     margin-bottom: 20px;
   }
+
+  ${props =>
+    !props.OrphanageWeekends &&
+    css`
+      background: linear-gradient(154.16deg, #fdf0f5 7.85%, #ffffff 91.03%);
+      border: 1px solid #ffbcd4;
+      color: #ff669d;
+    `}
 `;
