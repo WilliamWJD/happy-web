@@ -28,7 +28,7 @@ const OrphanagesMap: React.FC = () => {
   const [orphanages, setOrphanages] = useState<IOrphanage[]>([]);
 
   useEffect(() => {
-    CurrentLocation();
+    // CurrentLocation();
     async function loadOrphanages() {
       const response = await api.get('/orphanages');
       console.log(response.data);
@@ -97,7 +97,6 @@ const OrphanagesMap: React.FC = () => {
           </footer>
         </div>
       </aside>
-
       <Map
         center={[currentLatitude, currentLongitude]}
         zoom={15}
@@ -108,7 +107,7 @@ const OrphanagesMap: React.FC = () => {
         {orphanages.map(orphanage => (
           <Marker
             icon={mapIcon}
-            position={[orphanage.latitude, orphanage.longitude]}
+            position={[-22.839296, -47.1498752]}
             key={orphanage.id}
           >
             <MarkPopup
