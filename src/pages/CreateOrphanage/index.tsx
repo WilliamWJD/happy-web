@@ -2,7 +2,7 @@ import React, { useState, FormEvent, ChangeEvent } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Map, Marker, TileLayer } from 'react-leaflet';
 import { LeafletMouseEvent } from 'leaflet';
-import { FiPlus } from 'react-icons/fi';
+import { FiPlus, FiX } from 'react-icons/fi';
 import { toast } from 'react-toastify';
 
 import mapIcon from '../../utils/mapIcon';
@@ -22,6 +22,11 @@ import {
   ConfirmButoon,
 } from './styles';
 
+interface IPreviewImages {
+  name: string;
+  url: string;
+}
+
 const CreateOrphanage: React.FC = () => {
   const history = useHistory();
 
@@ -33,7 +38,7 @@ const CreateOrphanage: React.FC = () => {
   const [opening_hours, setOpeningHours] = useState('');
   const [open_on_weekends, setOpenOnWeekends] = useState(true);
   const [images, setImages] = useState<File[]>([]);
-  const [previewImages, setPreviewImages] = useState<string[]>([]);
+  const [previewImages, setPreviewImages] = useState<IPreviewImages[]>([]);
 
   function handleMapClick(event: LeafletMouseEvent) {
     const { lat, lng } = event.latlng;
@@ -50,10 +55,24 @@ const CreateOrphanage: React.FC = () => {
     setImages(selectedImages);
 
     const selectedImagesPreview = selectedImages.map(image => {
-      return URL.createObjectURL(image);
+      return {
+        name: image.name,
+        url: URL.createObjectURL(image),
+      };
     });
 
     setPreviewImages(selectedImagesPreview);
+  }
+
+  function handleDeleteImage(image: IPreviewImages) {
+    const removeImagePreview = previewImages.filter(
+      item => item.url !== image.url,
+    );
+
+    const removeImage = images.filter(item => item.name !== image.name);
+
+    setPreviewImages(removeImagePreview);
+    setImages(removeImage);
   }
 
   async function handleSubmit(e: FormEvent) {
@@ -138,7 +157,15 @@ const CreateOrphanage: React.FC = () => {
 
               <UploadedImages>
                 {previewImages.map(image => (
-                  <img key={image} src={image} alt={name} />
+                  <div key={image.name}>
+                    <img src={image.url} alt={image.name} />
+                    <button
+                      type="button"
+                      onClick={() => handleDeleteImage(image)}
+                    >
+                      <FiX color="#FF669D" size={24} />
+                    </button>
+                  </div>
                 ))}
 
                 <label htmlFor="images[]">

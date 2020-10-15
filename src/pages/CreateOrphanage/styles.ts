@@ -89,19 +89,39 @@ export const InputBlock = styled.div`
   input[type='file'] {
     display: none;
   }
-
-  img {
-    width: 100%;
-    height: 96px;
-    object-fit: cover;
-    border-radius: 20px;
-  }
 `;
 
 export const UploadedImages = styled.div`
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-gap: 16px;
+
+  > div {
+    width: 100%;
+    height: 96px;
+    border-radius: 20px;
+    position: relative;
+
+    img {
+      width: 100%;
+      height: 96px;
+      object-fit: cover;
+      border-radius: 20px;
+    }
+
+    button {
+      border: none;
+      border: 1px solid #d3e2e5;
+      background-color: #fff;
+      position: absolute;
+      border-radius: 0 19px 0 20px;
+      padding: 4px 8px;
+      right: 0;
+      color: #ff669d;
+      font-size: 20px;
+      cursor: pointer;
+    }
+  }
 
   > label {
     height: 96px;
