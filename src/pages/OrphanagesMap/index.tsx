@@ -91,7 +91,7 @@ const OrphanagesMap: React.FC = () => {
         </div>
       </aside>
       <Map
-        center={[-22.839296, -47.1498752]}
+        center={[currentLatitude, currentLongitude]}
         zoom={15}
         style={{ width: '100%', height: '100%' }}
       >
