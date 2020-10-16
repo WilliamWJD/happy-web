@@ -28,10 +28,9 @@ const OrphanagesMap: React.FC = () => {
   const [orphanages, setOrphanages] = useState<IOrphanage[]>([]);
 
   useEffect(() => {
-    // CurrentLocation();
+    CurrentLocation();
     async function loadOrphanages() {
       const response = await api.get('/orphanages');
-      console.log(response.data);
       setOrphanages(response.data);
     }
     loadOrphanages();

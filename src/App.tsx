@@ -10,8 +10,8 @@ import GlobalStyle from './styles/global';
 const App: React.FC = () => {
   return (
     <>
-      <ToastContainer />
       <GlobalStyle />
+      <ToastContainer />
       <Routes />
     </>
   );
