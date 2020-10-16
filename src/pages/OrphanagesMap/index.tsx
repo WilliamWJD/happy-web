@@ -27,14 +27,14 @@ const OrphanagesMap: React.FC = () => {
   const [currentLongitude, setCurrentLongitude] = useState(0);
   const [orphanages, setOrphanages] = useState<IOrphanage[]>([]);
 
-  // useEffect(() => {
-  //   CurrentLocation();
-  //   async function loadOrphanages() {
-  //     const response = await api.get('/orphanages');
-  //     setOrphanages(response.data);
-  //   }
-  //   loadOrphanages();
-  // }, []);
+  useEffect(() => {
+    CurrentLocation();
+    async function loadOrphanages() {
+      const response = await api.get('/orphanages');
+      setOrphanages(response.data);
+    }
+    loadOrphanages();
+  }, []);
 
   function CurrentLocation() {
     navigator.geolocation.getCurrentPosition(
@@ -97,7 +97,7 @@ const OrphanagesMap: React.FC = () => {
       >
         <TileLayer url="https://a.tile.openstreetmap.org/{z}/{x}/{y}.png" />
 
-        {/* {orphanages.map(orphanage => (
+        {orphanages.map(orphanage => (
           <Marker
             icon={mapIcon}
             position={[orphanage.latitude, orphanage.longitude]}
@@ -116,7 +116,7 @@ const OrphanagesMap: React.FC = () => {
               </Link>
             </MarkPopup>
           </Marker>
-        ))} */}
+        ))}
       </Map>
 
       <Link to={`/create/orphanage/${currentLatitude},${currentLongitude}`}>
