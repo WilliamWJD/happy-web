@@ -75,7 +75,6 @@ const OrphanagesMap: React.FC = () => {
             <ul>
               <li>
                 <a
-                  // eslint-disable-next-line react/jsx-no-target-blank
                   target="_blank"
                   href="https://www.linkedin.com/in/william-jose-dias/"
                 >
@@ -83,16 +82,11 @@ const OrphanagesMap: React.FC = () => {
                 </a>
               </li>
               <li>
-                <a
-                  // eslint-disable-next-line react/jsx-no-target-blank
-                  target="_blank"
-                  href="https://github.com/williamwjd"
-                >
+                <a target="_blank" href="https://github.com/williamwjd">
                   <img src={iconGithub} alt="" />
                 </a>
               </li>
             </ul>
-            {/* <span>William José Dias</span> */}
           </footer>
         </div>
       </aside>

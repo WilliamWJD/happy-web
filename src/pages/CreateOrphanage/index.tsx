@@ -190,8 +190,6 @@ const CreateOrphanage: React.FC = () => {
             </InputBlock>
           </fieldset>
 
-          {/* -------------- VISITAÇÃO --------------- */}
-
           <fieldset>
             <legend>Visitação</legend>
 
