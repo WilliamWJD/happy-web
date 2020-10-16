@@ -7,6 +7,8 @@ import mapIcon from '../../utils/mapIcon';
 
 import Sidebar from '../../components/Sidebar';
 
+import noImageFound from '../../images/no-image-found.png';
+
 import {
   Container,
   Main,
@@ -66,22 +68,27 @@ const Orphanage: React.FC = () => {
       <Main>
         <OrphanageDetails>
           <img
-            src={orphanage.images[activeImageIndex].url}
+            src={
+              orphanage.images[activeImageIndex]
+                ? orphanage.images[activeImageIndex].url
+                : noImageFound
+            }
             alt={orphanage.name}
           />
 
           <Images>
-            {orphanage.images.map((image, index) => (
-              <ButtonImage
-                type="button"
-                key={image.id}
-                onClick={() => setActiveImageIndex(index)}
-                activeImageIndex={activeImageIndex}
-                indexImage={index}
-              >
-                <img src={image.url} alt={orphanage.name} />
-              </ButtonImage>
-            ))}
+            {orphanage.images &&
+              orphanage.images.map((image, index) => (
+                <ButtonImage
+                  type="button"
+                  key={image.id}
+                  onClick={() => setActiveImageIndex(index)}
+                  activeImageIndex={activeImageIndex}
+                  indexImage={index}
+                >
+                  <img src={image.url} alt={orphanage.name} />
+                </ButtonImage>
+              ))}
           </Images>
 
           <OrphanageDetailsContent>
